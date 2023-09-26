@@ -6,10 +6,12 @@ public class Player : MonoBehaviour
 {
     public Rigidbody rig;
     public GameObject granadaModelo;
+    public Transform posicaoTiro;
 
     public float turnSpeed;
     public float moveSpeed;
     public float jumpForce;
+    public float granadeForce;
 
     private bool taNoChao = false;
 
@@ -29,7 +31,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Instantiate(granadaModelo);
+            GameObject granadaInstanciada = Instantiate(granadaModelo, posicaoTiro.position, Quaternion.identity);
+            Rigidbody rigGranada = granadaInstanciada.GetComponent<Rigidbody>();
+            Vector3 direction = transform.forward + Vector3.up;
+            rigGranada.AddForce(direction * granadeForce);
         }
     }
 
