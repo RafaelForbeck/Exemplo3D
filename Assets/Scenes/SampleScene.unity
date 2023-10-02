@@ -305,6 +305,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4448083719796367889, guid: 297c3794db2e3a74f8bd3d4ca24121c7, type: 3}
   m_PrefabInstance: {fileID: 385032272}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &361413882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361413883}
+  m_Layer: 0
+  m_Name: PosicaoTiro
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &361413883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361413882}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.28, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 716718183}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &385032272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,9 +603,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 397254289}
   granadaModelo: {fileID: 7432831306660557379, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+  posicaoTiro: {fileID: 361413883}
   turnSpeed: 160
   moveSpeed: 7
   jumpForce: 8
+  granadeForce: 400
 --- !u!4 &429262847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4448083719796367889, guid: 297c3794db2e3a74f8bd3d4ca24121c7, type: 3}
@@ -801,7 +834,7 @@ GameObject:
   - component: {fileID: 716718185}
   - component: {fileID: 716718184}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: BracoDireito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -819,7 +852,8 @@ Transform:
   m_LocalPosition: {x: 0.56, y: 0, z: 0.37}
   m_LocalScale: {x: 0.34593, y: 0.34593, z: 0.34593}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 361413883}
   m_Father: {fileID: 397254288}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!136 &716718184
@@ -949,6 +983,63 @@ Transform:
   - {fileID: 1112840738}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &954719021
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.311
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942858367441972232, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7432831306660557379, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
+      propertyPath: m_Name
+      value: Granada
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74ce18ecebc000d47a1188049007902b, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,7 +1512,7 @@ GameObject:
   - component: {fileID: 2085653630}
   - component: {fileID: 2085653629}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: BracoEsquerdo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1642,3 +1733,4 @@ SceneRoots:
   - {fileID: 174798968}
   - {fileID: 397254288}
   - {fileID: 850237736}
+  - {fileID: 954719021}
