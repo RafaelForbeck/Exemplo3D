@@ -23,12 +23,14 @@ public class Player : MonoBehaviour
         transform.Rotate(Vector3.up, horizontal * turnSpeed * Time.deltaTime);
         transform.position += transform.forward * vertical * moveSpeed * Time.deltaTime;
 
+        // Comando para pular
         if (Input.GetKeyDown(KeyCode.Space) && taNoChao)
         {
             rig.velocity = Vector3.up * jumpForce;
             taNoChao = false;
         }
 
+        // Comando para lançar granada
         if (Input.GetKeyDown(KeyCode.Z))
         {
             GameObject granadaInstanciada = Instantiate(granadaModelo, posicaoTiro.position, Quaternion.identity);
