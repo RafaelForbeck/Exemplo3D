@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3225368888595896342}
   - component: {fileID: 8121318999840769568}
   - component: {fileID: 3973553595490632043}
-  m_Layer: 0
-  m_Name: Granada
+  - component: {fileID: 6160492372857177064}
+  m_Layer: 6
+  m_Name: Morteiro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,3 +134,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6160492372857177064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432831306660557379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514229ce653481f4abfa791d4db1fcc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosao: {fileID: 5519784260565070892, guid: 8497e83f9d30ca24aa5a7dc8e223bd9c, type: 3}
