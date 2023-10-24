@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7457143608488761294}
   - component: {fileID: 5249575673664018935}
   - component: {fileID: 1004558822616677626}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Caixa
   m_TagString: Untagged
   m_Icon: {fileID: 0}

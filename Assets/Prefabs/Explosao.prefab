@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 953609747226130035}
   - component: {fileID: 736771986137133182}
   - component: {fileID: -846381135688199919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Explosao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,3 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 60
   maxSize: 10
+  explosionForce: 50

@@ -6,6 +6,7 @@ public class Explosao : MonoBehaviour
 {
     public float speed;
     public float maxSize;
+    public float explosionForce;
     
     void Update()
     {
@@ -18,7 +19,14 @@ public class Explosao : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Trigou!");
+        var rig = other.gameObject.GetComponent<Rigidbody>();
+        if (rig == null ) {
+            return;
+        }
 
+        var direction = other.transform.position - transform.position;
+        var force = 1 / direction.magnitude * explosionForce;
+
+        rig.velocity = direction.normalized * force;
     }
 }
