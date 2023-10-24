@@ -15,4 +15,10 @@ public class Explosao : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("Trigou!");
+
+    }
 }
