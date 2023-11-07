@@ -5,23 +5,29 @@ using UnityEngine;
 public enum EnemyStatus
 {
     Idle,
-    Run,
     Pursuit,
     Attack,
     Evade
 }
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(MeshRenderer))]
 public class Enemy : MonoBehaviour
 {
     Rigidbody body;
+    MeshRenderer mesh;
     public Transform playerTransform;
     public float speed;
     public EnemyStatus status = EnemyStatus.Idle;
+    public Material idleMaterial;
+    public Material persuitMaterial;
+    public Material attackMaterial;
+    public Material evadeMaterial;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody>();
+        mesh = GetComponent<MeshRenderer>();
     }
 
     void Update()
@@ -30,8 +36,6 @@ public class Enemy : MonoBehaviour
         {
             case EnemyStatus.Idle:
                 Idle();
-                break;
-            case EnemyStatus.Run:
                 break;
             case EnemyStatus.Pursuit:
                 Pursuit();
@@ -50,24 +54,57 @@ public class Enemy : MonoBehaviour
         var distance = (playerTransform.position - transform.position).magnitude;
         if (distance < 10)
         {
-            status = EnemyStatus.Pursuit;
+            GoPursuit();
         }
     }
 
-    void Run()
+    void GoPursuit()
     {
-
+        status = EnemyStatus.Pursuit;
+        mesh.material = persuitMaterial;
     }
 
     void Pursuit()
     {
-        var direcao = (playerTransform.position - transform.position).normalized;
+        var vetor = playerTransform.position - transform.position;
+        var direcao = vetor.normalized;
+        var distancia = vetor.magnitude;
+
         body.AddForce(direcao * speed * Time.deltaTime);
+
+        if (distancia > 10) {
+            GoIdle();
+        }
+    }
+
+    void GoIdle()
+    {
+        status = EnemyStatus.Idle;
+        mesh.material = idleMaterial;
     }
 
     void Attack()
     {
+        // Atacar
 
+        var vetor = playerTransform.position - transform.position;
+        var distancia = vetor.magnitude;
+        // Preciso perseguir
+        if (distancia > 5)
+        {
+            GoPursuit();
+        }
+        // Preciso fugir
+        if (distancia < 2)
+        {
+            GoEvade();
+        }
+    }
+
+    void GoEvade()
+    {
+        status = EnemyStatus.Evade;
+        mesh.material = evadeMaterial;
     }
 
     void Evade()
