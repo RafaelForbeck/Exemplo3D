@@ -13,11 +13,11 @@ TagManager:
   - UI
   - ProjetilPlayer
   - Props
-  - Explosion
+  - PlayerExplosion
   - Enemy
   - Ground
-  - 
-  - 
+  - ProjetilEnemy
+  - EnemyExplosion
   - 
   - 
   - 

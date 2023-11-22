@@ -19,6 +19,18 @@ public class Enemy : MonoBehaviour
     public Transform playerTransform;
     public float speed;
     public EnemyStatus status = EnemyStatus.Idle;
+
+    public Transform shotSpawner;
+    public GameObject shotModel;
+
+    public float shotInterval;
+    private float currentShotTime = 0f;
+    public float shotForce;
+    
+    public float maxPersuitDistance;
+    public float maxAttackDistance;
+    public float maxEvadeDistance;
+
     public Material idleMaterial;
     public Material persuitMaterial;
     public Material attackMaterial;
@@ -41,8 +53,10 @@ public class Enemy : MonoBehaviour
                 Pursuit();
                 break;
             case EnemyStatus.Attack:
+                Attack();
                 break;
             case EnemyStatus.Evade:
+                Evade();
                 break;
             default:
                 break;
@@ -52,7 +66,7 @@ public class Enemy : MonoBehaviour
     void Idle()
     {
         var distance = (playerTransform.position - transform.position).magnitude;
-        if (distance < 10)
+        if (distance < maxPersuitDistance)
         {
             GoPursuit();
         }
@@ -72,8 +86,13 @@ public class Enemy : MonoBehaviour
 
         body.AddForce(direcao * speed * Time.deltaTime);
 
-        if (distancia > 10) {
+        if (distancia > maxPersuitDistance) {
             GoIdle();
+        }
+
+        if (distancia < maxAttackDistance)
+        {
+            GoAttack();
         }
     }
 
@@ -83,19 +102,39 @@ public class Enemy : MonoBehaviour
         mesh.material = idleMaterial;
     }
 
+    void GoAttack()
+    {
+        status = EnemyStatus.Attack;
+        mesh.material = attackMaterial;
+    }
+
     void Attack()
     {
-        // Atacar
-
         var vetor = playerTransform.position - transform.position;
         var distancia = vetor.magnitude;
+        var direcao = vetor.normalized;
+
+        // Atacar
+        if (currentShotTime <= 0)
+        {
+            // Atirar
+            GameObject morteiroGO = Instantiate(shotModel, shotSpawner.position, Quaternion.identity);
+            Rigidbody morteiroRB = morteiroGO.GetComponent<Rigidbody>();
+            morteiroRB.AddForce(direcao * shotForce);
+
+            // Atualizar o cronometro
+            currentShotTime = shotInterval;
+        }
+
+        currentShotTime -= Time.deltaTime;
+        
         // Preciso perseguir
-        if (distancia > 5)
+        if (distancia > maxAttackDistance)
         {
             GoPursuit();
         }
         // Preciso fugir
-        if (distancia < 2)
+        if (distancia < maxEvadeDistance)
         {
             GoEvade();
         }
@@ -109,6 +148,15 @@ public class Enemy : MonoBehaviour
 
     void Evade()
     {
+        var vetor = playerTransform.position - transform.position;
+        var distancia = vetor.magnitude;
+        var direcao = vetor.normalized;
 
+        body.AddForce(-direcao * speed * Time.deltaTime);
+
+        if (distancia >= maxEvadeDistance)
+        {
+            GoAttack();
+        }
     }
 }
